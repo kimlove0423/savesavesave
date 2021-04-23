@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function creatTb(){
+            var textA = document.getElementById("inputA").value;
+            var textB = document.getElementById("inputB").value;
+            var obj = document.getElementById("parent");
+            
+            var trTag = document.createElement("tr");
+            var tdTag1 = document.createElement("td");
+            var tdTag2 = document.createElement("td");
+            trTag.appendChild(tdTag1);
+            trTag.appendChild(tdTag2);
+            tdTag1.innerHTML = textA;
+            tdTag2.innerHTML = textB;
+            
+            if(document.getElementById("myTb") == null){
+                var newTb = document.createElement("table");
+                obj.appendChild(newTb);
+                newTb.setAttribute("border", "1");
+                newTb.setAttribute("id", "myTb");
+                
+            }else{
+                var newTb = document.getElementById("myTb");
+                newTb.appendChild(trTag);
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3> 테이블 만들기 </h3>
+    <hr>
+    <div id ="parent">
+    <input type="text" id="inputA">
+    <input type="text" id="inputB">
+    <a href="javascript:creatTb()">table 생성 및 tr 추가</a>
+    </div>
+</body>
+</html>

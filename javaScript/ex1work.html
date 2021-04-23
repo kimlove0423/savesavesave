@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        bg-box {
+            width: 200px;
+            height: 150px;
+        }
+
+        .bg-box>video {
+            position: absolute;
+            height: 150%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        div.top {
+            background: blue;
+            height: 5%;
+            width: 100%;
+        }
+
+        div.center {
+            background: blueviolet;
+            height: 95%;
+            width: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        #menubar {
+            background: black;
+            position: fixed;
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            top: 10px;
+        }
+
+        #menubar ul {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #menubar ul li {
+            display: inline;
+            list-style-type: none;
+            padding: 0px 15px;
+        }
+
+        #menubar ul li a {
+            color: blanchedalmond;
+            text-decoration: none;
+        }
+
+        #menubar ul li a:hover {
+            color: violet;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='bg-box'>
+        <video style="opacity: 0.2;" autoplay loop muted>
+            <source src="../object/avi/magic.mp4" type="video/mp4">
+            지원하지 않습니다.
+        </video>
+    </div>
+    <div class="top">
+        <nav id="menubar" style="opacity: 0.5;">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Espresso</a></li>
+                <li><a href="#">Cappuccino</a></li>
+                <li><a href="#">Cafe Latte</a></li>
+                <li><a href="#">F.A.Q</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="center">
+        <script src="ex1work.js"></script>
+    </div>
+</body>
+
+</html>

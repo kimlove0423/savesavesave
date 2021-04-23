@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>객체 생성 및 활용</h3>
+    <hr>
+    <script>
+        // Date 객체 생성
+        var today = new Date();
+
+        // Date 객체의 toGMTString() 메소드 호출
+        document.write("현재 시간 : "+today.toGMTString()+"<br>");
+        document.write("getDate : " + today.getDate()+"<br>");
+        document.write("getDay : " + today.getDay()+"<br>");
+        document.write("getMonth : " + today.getMonth()+"<br>");
+        document.write("getTime : " +today.getTime()+"<br>");
+
+        // 시간은 바로 가져올 수 있음
+        var now = Date.now();
+        document.write("now= "+ now+"<br>");
+
+        // String 객체 생성
+        var mystr = new String("자바스크립트 공부하기");
+        var mystr2 = "자바스크립트 공부하기";
+        document.write("mystr의 내용: "+mystr+"<br>");
+        document.write("mystr의 길이: "+mystr.length+"<br>");
+        document.write("typeof(mystr) : "+typeof(mystr)+"<br>"); //객체
+        document.write("typeof(mystr2) : "+typeof(mystr2)+"<br>"); //스트링
+    </script>
+    
+</body>
+</html>

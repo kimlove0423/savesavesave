@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div{
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            border: 1px solid lightgray;
+            text-align: center;
+            color: white;
+            background: red;
+        }
+        #down:hover {
+            position: relative;
+            left: 20px;
+            top: 20px;
+            background: green;
+            z-index: 10;
+        }
+
+    #up:hover{
+        position: relative;
+        right: 20px;
+        bottom: 20px;
+        background: green;
+    } */
+
+    div {position: absolute;}
+    img {position: absolute; width: 100px; height: 140px;}
+    #spadeJ {
+        z-index: 0; left: 10px;
+    }
+    #spadeQ {
+        z-index: 1; left: 60px;
+    }
+    #heartK {
+        z-index: 2; left: 100px;
+    }
+    #spadeK {
+        z-index: 3; left: 140px;
+    }
+
+    #spadeJ:hover,#spadeQ:hover,#heartK:hover,#spadeK:hover{
+        z-index: 4; top: 30px; 
+    }
+    </style>
+</head>
+<body>
+    <!-- <h3>상대 배치, relative 해보기</h3>
+    <hr>
+    <div>T</div>
+    <div id="down">h</div>
+    <div>a</div>
+    <div>n</div>
+    <div id="up">k</div>
+    <div>s</div> -->
+    <div>
+    <img id="spadeJ" src="img/j.JPG">
+    <img id="spadeQ" src="img/q.JPG">
+    <img id="heartK" src="img/k2.JPG">
+    <img id="spadeK" src="img/k.JPG">
+    </div>
+</body>
+</html>

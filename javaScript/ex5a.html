@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function change(obj){
+            var color = ["red","blue"];
+            if(obj.style.color == color[0]){
+                obj.style.color = color[1]
+            }else{
+                obj.style.color = color[0];
+            }
+        }
+        function change_updown(obj){
+            var v = obj.innerHTML;
+            var size = obj.parentNode.style.fontSize;
+            
+            if(v == "+"){
+                size = 15;
+            }else{
+                parent.style.fontSize = "20px";
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <h3>this 활용</h3>
+    <hr>
+    <button onclick="change(this);">버튼</button>
+    <button onclick="change(this);">버튼</button>
+    <div style="font-size: 5px;">크기를 변경
+        <button onclick="change_updown(this);">+</button>
+        <button onclick="change_updown(this);">-</button>
+    </div>
+</body>
+</html>

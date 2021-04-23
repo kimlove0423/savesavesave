@@ -1,0 +1,5 @@
+/* 스타일 안에서 쓰는 내용을 그대로 적어두면 된다. */
+body {background-color: mistyrose;}
+h3 {color: purple;}
+hr {border: 5px solid yellowgreen;}
+span {color: blue; font-size: 20px;}

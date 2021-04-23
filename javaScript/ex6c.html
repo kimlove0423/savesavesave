@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function over(obj) {
+            obj.style.opacity = 0.2;
+        }
+        function up(obj) {
+            obj.style.opacity = 1;
+        }
+
+        function chimg(obj) {
+            var i = document.getElementById("myimg").src.substr(40,1);
+            // alert(i);
+            if(obj.value == '이전'){
+                --i;
+                // alert(i);
+                if(i <= 0) {i = 8;}
+                var imgurl = "http://127.0.0.1:5500/object/images/abc0"+i+".JPG";
+                document.getElementById("myimg").src = imgurl;
+            }else{
+                ++i;
+                if(i > 8) {i = 1;}
+                var imgurl = "http://127.0.0.1:5500/object/images/abc0"+i+".JPG";
+                document.getElementById("myimg").src = imgurl;
+            }
+        }
+
+        function loopimgbt(obj){
+            if(obj.value == '자동'){
+                a = setInterval(loopimg(), 1000);
+                obj.value = '멈춤';
+            }else{
+                if(a!=null){ clearInterval(a);}
+                obj.value = '자동';}
+            }
+            
+        function loopimg(){
+                return function(){
+                var i = document.getElementById("myimg").src.substr(40,1);
+                ++i;
+                if(i >= 8) {i = 1;}
+                var imgurl = "http://127.0.0.1:5500/object/images/abc0"+i+".JPG";
+                document.getElementById("myimg").src = imgurl;
+                }
+            }
+            
+        function whatKeyDown(e) { //적용하기
+            switch (e) {
+                case 37: { chimg("이전"); break; }
+                case 39: { chimg("다음"); break; }
+            }
+        }
+
+         window.onkeydown = function () {
+            whatKeyDown(event.keyCode);
+         }
+    </script>
+</head>
+
+<body>
+    <h3>마우스 오버 이벤트 실습하기</h3>
+    <hr>
+    <div>
+        <span onmouseover="up(this)" onmouseout="over(this)">
+            <img src="http://127.0.0.1:5500/object/images/abc01.JPG" id="myimg">
+        </span>
+    </div>
+    <div>
+        <span>
+            <input type="button" value="이전" onclick="chimg(this)">
+            <input type="button" value="다음" onclick="chimg(this)">
+            <input type="button" value="자동" onclick="loopimgbt(this)">
+        </span>
+    </div>
+</body>
+</html>

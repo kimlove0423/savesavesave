@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function change(){
+            var p = document.getElementById("firstP");
+            p.innerHTML="나의 <img src='../ex_html/img/dog.jpg' width='280px' height='350px'> 강아지";
+        }
+
+        function change2(obj, size, color){
+            obj.style.color = color;
+            obj.style.fontSize = size;
+        }
+
+        function change3(){
+            var spanArray = document.getElementsByTagName("span");
+            // var span_ori = spanArray[i].style;
+            for(var i = 0; i<spanArray.length; i++){
+                var span = spanArray[i];
+                if(i%2 == 0){
+                    span.style.color = "red";
+                    span.style.fontSize = "20px";
+                }else{
+                    span.style.color = "blue";
+                    span.style.fontSize = "30px";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>innerHTML 활용 : 아래 글자를 클릭하면 강아지가 보인다</h3>
+    <hr>
+
+    <p id="firstP" style="color:blue"
+    onclick="change()">
+    여기에 <font style="color: red;">클릭하세요</font>
+    </p>
+
+    <br><br>
+
+    <h3>this 활용하기</h3>
+    <hr>
+    <button onclick="change2(this, '30px', 'red')">버튼</button>
+    <button onclick="change2(this, '30px', 'blue')">버튼</button>
+    <div onclick="change2(this, '25px','orange')">여기 클릭하면 크기와 색 변경</div>
+
+    <br><br>
+
+    <h3>내가 좋아하는 과일
+        <button onclick="change3()">누르세요</button>
+    </h3>
+    <hr>
+    <span>사과</span>냠냠냠<br>냠냠냠<span>바나나</span>냠냠냠<span>체리</span><br>냠냠냠냠냠냠냠냠<span>자두</span>냠냠냠
+</body>
+</html>

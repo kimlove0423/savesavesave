@@ -1,0 +1,63 @@
+
+		#contents {
+			width:500px;
+			margin:0 auto;
+		}
+		ul {			
+			list-style: none;
+			/* padding-top:40px; */
+		}
+		li {
+			/* clear:left; */
+			margin-top: 5px;
+		}
+		li > label {
+			font-weight: bold;
+			width:70px;
+			float:left;
+			text-align:left;
+		}
+		input[type="text"] {
+			width:200px;
+			padding:2px;			
+			margin:0 5px 0 10px;
+			color: black;
+			font-size: 12px;
+		}
+		input[name="cnt"] {
+			width:50px;
+			margin:0 0 0 0;
+			/* padding:0 0 0 0;			
+			color: darkgrey; */
+		}
+
+		textarea {
+			/* width:160px; */
+			padding:0 0 0 0;			
+			margin:10px 5px 0 10px;
+			/* margin-top:10px; */
+		}
+		/* li:nth-child(3) {
+			text-align: center; 
+		}*/
+
+		legend {
+			font-weight: bold;
+			color: darkorchid;
+			padding: 3px 6px;
+		}
+
+		button {
+			margin:auto;
+			/* width:400px; */
+			/* padding:10px; */
+			/* border:1px solid #ccc;			 */
+			/* font-size:1em; */
+		}
+		#result {
+			width:500px;
+			padding:10px;
+			margin-top:5px;
+			font-size:1.2em;
+			text-align:center;
+		}

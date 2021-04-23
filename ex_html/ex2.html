@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3><a id="ramen">라면끓이는 방법</a></h3>
+    <hr>
+    <ol type="a">
+        <li>물을 끓인다.</li>
+        <li>어쩌고.</li>
+        <li>저쩌고.</li>
+        <li>요쩌고.</li>
+    </ol>
+    <ul>
+        <li>필요한 재료</li>
+        <ol type="i">
+            <li>라면 면</li>
+            <li>라면 스프</li>
+            <li>물 300ml</li>
+        </ol>
+        <li>먹을 사람</li>
+        <ol type="i">
+            <li>홍길동</li>
+            <li>박놀부</li>
+            <li>김흥부</li>
+        </ol>
+    </ul>
+    <hr>
+    <h3>테이블만들기</h3>
+    <table border="1" bordercolor="black" width="200" height="200" bgcolor="grey">
+        <caption>1학기 성적</caption>
+        <thead>
+            <tr>
+                <td>이름</td>
+                <td colspan="2">성적</td>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td>합</td>
+                <td>225</td>
+                <td>230</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>황기태</td>
+                <td>80</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td rowspan="2">이재문</td>
+                <td>95</td>
+                <td>99</td>
+            </tr>
+            <tr>
+                <td>40</td>
+                <td>61</td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td colspan="3" rowspan="2">이미지1</td>
+                <td colspan="3" rowspan="2">이미지2</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td colspan="6">6자리</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <h3>링크 만들기</h3>
+    포털 사이트
+    <ul>
+        <li><a href="http://www.naver.com" target="_blank">네이버</a></li>
+        <li><a href="http://www.google.com" target="_top">구글</a></li>
+    </ul>
+    <a href="#ramen">앵커를 활용해서 라면 끓이는 방법으로 바로가기</a><br>
+    <a href="mp4/yammyramen.mp4" download>라면 동영상 다운로드</a>
+    <br><br>
+    <hr>
+    <h3>아이프레임 만들기</h3>
+    <p>
+    <iframe src="ex2a.html" width="200" height="150">iframe 지원 하지 않는 브라우저</iframe>
+    <iframe src="ex2b.html" width="200" height="100">iframe 지원 하지 않는 브라우저</iframe></p>
+    <p>
+        <iframe src="http://www.naver.com" width="200" height="150">iframe 지원 하지 않는 브라우저</iframe>
+        <iframe src="http://www.youtube.com" width="200" height="100">iframe 지원 하지 않는 브라우저</iframe>
+        <br>검색엔진 사이트의 경우 아이프레임 호출을 막아놨을 확률이 큼
+    </p>
+    <hr>
+    <h3>네이버 검색 사례로 폼전송과정 이해하기</h3>
+    <form name="sform" action="http://search.naver.com/search.naver" method="GET" target="_blank">
+        <input name="query" type="text">
+        <input type="submit" value="검색">
+    </form>
+    <br>[실습] 네이버 평점 검색하기<br>
+    <form name="sform" action="https://movie.naver.com/movie/point/af/list.nhn" method="GET" target="_blank">
+        평점 페이지 번호: 
+        <input name="page" type="text" size="2" >
+        <input type="submit" value="검색">
+    </form>
+</body>
+
+</html>

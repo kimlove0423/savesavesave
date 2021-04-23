@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>DOM - Create & Add Node</title>
+	<link rel="stylesheet" href="nameList.css">
+	<script>
+	function addName(){
+    	var inputName = document.getElementById('userName').value; //이름 가져옴
+    	var parentDiv = document.getElementById('nameList'); //부모인디브
+    	var childp = document.createElement('p'); //자식p생성
+		childp.innerHTML = inputName;
+		
+		var delx = document.createElement('font'); //text == textNode
+        delx.innerHTML = "X";
+		delx.setAttribute('class','del');
+        childp.appendChild(delx);
+        delx.onclick = function(){
+			var p = childp.parentElement; //부모 HTML태그 요소
+            p.removeChild(childp); //자신을 부모로부터 제거
+        };
+		// parentDiv.appendChild(childp); //insert계열임!
+		parentDiv.insertBefore(childp,parentDiv.firstChild); //insert계열!
+		// event.preventDefault(); 
+	}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<h1>참가 신청</h1>
+		<form action="">
+			<input type="text" id="userName" placeholder="이름" >
+			<button type="button" onclick="addName()">신청</button>
+		</form>
+		<hr>
+		<div id="nameList"></div>
+	</div>
+</body>
+</html>

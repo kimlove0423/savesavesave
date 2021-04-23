@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body * {
+            margin: 10px;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <form action="">FORM
+        <div>DIV
+            <p>P</p>
+        </div>
+    </form>
+</body>
+<script>
+    var all = document.querySelectorAll("+");
+    for(var i = 0; i <all.length; i++){
+        var elem = all[i];
+        elem.addEventListener("click", function (elem){
+            alert("캡처링 :"+elem.currentTarget.tagName);
+        }, true);
+        elem.addEventListener("click", function (elem){
+            alert("버블링 :"+elem.currentTarget.tagName);
+        }, false);
+    }
+</script>
+</html>

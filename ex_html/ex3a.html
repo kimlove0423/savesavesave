@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>자기소개서 작성폼 만들기</h3>
+    <hr>
+    <form>
+        <table border="1">
+            <tr>
+                <td>이름:</td><td><input type="text" size="15" value=""></td>
+            </tr>
+            <tr>
+                <td>암호:</td><td><input type="password" value="" maxlength="4" size="15"></td>
+            </tr>
+            <tr>
+                <td>나라:</td><td><input type="text" list="countries" size="15">
+                    <datalist id="countries">
+                        <option value="가나"><option value="스위스"><option value="브라질">
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>자소서:</td><td><textarea cols="20" rows="5">이곳에 자기소개서 작성</textarea></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

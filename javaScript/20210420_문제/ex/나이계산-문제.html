@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>나이 계산하기</title>
+	<link rel="stylesheet" href="../css/age.css">
+</head>
+<!-- 1. 입력 받는다
+	 2. 나이 계산
+	 3. 화면에 출력한다. 
+-->
+<body>	
+	<button class="btn" onclick="calc()">나이 계산하기</button>
+	<div id="result" class="show">(결과 값 표시)</div>
+	<script>
+		function calc() {
+			var date = new Date();
+			var currentYear = date.getFullYear();
+			var birthYear = prompt("태어난 연도를 입력하세요.","YYYY");
+			//나머지를 작성하여 보세요
+			if(isNaN(birthYear) == false && birthYear.length == 4){
+				var res = currentYear - birthYear;
+				document.getElementById('result').innerText = res;
+			}else {
+				location.reload();
+			}
+		}
+		calc();
+	</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>당신의 취미는?</h3>
+    <hr>
+    <span>독서<input type="checkbox" name="hobby" value="reading"></span>
+    <span>운동<input type="checkbox" name="hobby" value="sports" checked></span>
+    <span>웹툰<input type="checkbox" name="hobby" value="webtoon"></span>
+    <span>게임<input type="checkbox" name="hobby" value="game"></span>
+    전체 <input type="checkbox" value="전체" onclick="f_uncheck(this);">
+    <input type="button" value="결과출력" onclick="f_check();" style="width: 100px;">
+    <script>
+        function f_check(){
+            var v_hobbys = document.getElementsByName('hobby');
+            var v_out = "당신의 취미는 ";
+            for(var i = 0; i<v_hobbys.length; i++){
+                var parent = v_hobbys[i].parentNode.textContent;
+                if(v_hobbys[i].checked){
+                    v_out += v_hobbys[i].value+"("+parent+") ";
+                }
+            }
+            alert(v_out+"입니다.");
+        }
+        function f_uncheck(obj){
+            var v_hobbys = document.getElementsByName('hobby');
+            for(var i = 0; i<v_hobbys.length; i++){
+                if(obj.checked){
+                    v_hobbys[i].checked = true;
+                }else{
+                v_hobbys[i].checked = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

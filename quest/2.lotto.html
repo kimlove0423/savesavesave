@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //무작위 숫자 1 ~45 6개
+        function lottoIsrun(){
+            var arr = [];
+            for(var i = 0; i <6; i++){
+                arr[i] = Math.ceil( Math.random() * 45 );
+                for(var j = 0; j < i; j++){
+                    if(arr[i] == arr[j]){ i--; breka;}
+                }
+            }
+            var place = document.getElementById("div_id");
+            // alert(place);
+            place.innerHTML = arr;
+        }
+    </script>
+    <style>
+        #div_id {
+            background-color: darkcyan;
+            width: 300px;
+            color: white;
+            text-align: center;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <h3>로또 번호를 랜덤으로 생성하세요!</h3>
+    <div id="div_id">랜덤번호</div>
+    <button onclick="lottoIsrun()">클릭</button>
+</body>
+</html>

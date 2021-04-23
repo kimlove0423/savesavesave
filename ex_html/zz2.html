@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* @keyframes identifier {
+            
+        } */
+        div{
+            font-size: 30px;
+            display: inline-block;
+            color: black;
+            transition: 3s;
+        }
+        div#rotate1 {transform: rotate(15deg);}
+        div#rotate2 {transform: rotate(15deg) translateX(-10px) translateY(3px);}
+        div#rotate3 {transform: rotate(15deg) translateX(-60px) translateX(50px) translateZ(50px);}
+        div#rotate1:hover {transform: rotate(110deg)}
+        div#rotate2:hover {transform: rotate(110deg)}
+        div#rotate3:hover {transform: rotate(110deg)}
+    </style>
+</head>
+<body>
+    <p>
+        <div id="rotate1"><b>\</b></div>
+        <div id="rotate2"><b>\</b></div>
+        <div id="rotate3"><b>\</b></div>
+        애니메이션확인</p>
+</body>
+</html>

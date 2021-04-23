@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="../javaScript/20210420_문제/css/quiz2.css">
+</head>
+<body>
+    <div id="contents">
+    <h1>상품 주문서</h1>
+    <fieldset><legend>개인 정보</legend><ul>
+        <li><label>이름</label><input type="text" placeholder="여백없이 입력"></li>
+        <li><label>연락처</label><input type="text" placeholder="연락가능한 번호"></li></li>
+    </ul></fieldset>
+    <fieldset><legend>배송지 정보</legend><ul>
+        <li><label>주소</label><input type="text" value="" style="width: 300px;"></li>
+        <li><label>전화번호</label><input type="text" value=""></li></li>
+        <li><label>메모</label><textarea rows="3" cols="33"></textarea></li></li>
+    </ul></fieldset>
+    <fieldset><legend>주문 정보</legend><ul>
+        <li><input type="checkbox" value="과">과테말라 안티구아 (100g)
+            <input type="text" value="0" name="cnt">개</li>
+        <li><input type="checkbox" value="인">인도네시아 만델링 (100g)
+            <input type="text" value="0" name="cnt">개</li>
+        <li><input type="checkbox" value="탐">탐라는도다(블렌딩) (100g)
+            <input type="text" value="0" name="cnt">개</li>
+    </ul></fieldset>
+    <div id="result">
+        <button value="">주문하기</button>
+        <button value="">다시작성</button>
+    </div>
+</div>
+</body>
+</html>

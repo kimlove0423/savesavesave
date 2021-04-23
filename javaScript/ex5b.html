@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" id="id_page">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span><input type="button" value="버튼 몇번눌렀나" onclick="f_check();"></span>
+        <span><input id="id_jh1" type="button" value="소스보기" onclick="f_source();"></span>
+        <span><input type="button" value="리로드" onclick="f_reload();"></span>
+    </div>
+    <div id="id_disp"></div>
+    <script>
+        var v_clkCount = 0; //전역변수
+        var v_clkNm = "버튼을 " + v_clkCount +"번 누르셨네요<br/>";
+        function f_check(){
+            v_clkCount ++;
+            var v_clkNm ="버튼을 " + v_clkCount + "번 누르셨네요<br/>";
+            document.getElementById("id_disp").innerHTML += v_clkNm;
+        }
+        function f_source(){
+            alert(document.getElementById("id_page").innerHTML);
+        }
+        function f_reload(){
+            location.reload();
+        }
+    </script>
+</body>
+</html>

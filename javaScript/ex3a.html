@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+        /*
+        자바스크림트 함수 생성 방식
+        1. 함수 선언문 (funtion statment)
+        2. 함수 표현식 (function expression)
+        3. 생성자 함수
+        */
+        //1. 함수 선언문 (funtion statment)
+        //선언적 함수라 하며 함수의 이름이 존재하고 글로벌 영역에 먼저 등록
+        //(함수의 호이스팅)되어 run time 전에 이미 등록이 됨 
+        console.log("1 :"+ add(3,4)); //먼저해도 읽을 수 있음
+         function add(x,y){
+             return x + y
+         }
+         console.log("2 :"+add(3,4));
+
+         //2. 함수의 표현식 (funtion expression)
+         //익명함수
+         //형태는 함수이지만 이름이 없으므로 익명 함수라 부름
+         //선언적 함수와 다르게 일반 문장과 같이 run time시에 실행
+         var f_output = function(){ alert("익명함수")};
+         alert(f_output);
+
+         //3. 생성자 함수
+         console.log("add4 2 :"+add4(2,4)); //먼저하면 오류
+         var add4 = function mult(x,y){
+             return x * y;
+         };
+         console.log("add4 2 :"+add4(2,4));
+    </script>
+
+
+    <script>
+        /*
+        자바스크림트 호이스팅(Hoisting)
+        hoist 끌어올리기
+        모든 변수 선언은 호이스트 된다.
+
+        변수의 정의가 그 범위에 따라 선언과 할당으로 분리
+        즉 변수가 함수 내에서 정의되었을 경우 선언이 함수의 최상위로
+        함수 바깥에서 정의되었을 경우 전역 컨텍스트의 최상위로 변경된다.
+
+        선언 (Declaration)
+        */
+        function ex(){
+            console.log(x); // undefined
+            var x = 100;
+            console.log(x); // 100
+        }
+        ex();
+        // 다른 언어의 경우 변수 x를 선언하지 않았기 때문에 오류가 나지만
+        // javascript 에서는 undefined라 하고 넘어감
+        // var x = 100 구문에서 var x를 호이스트함.
+
+        //선언문은 항시 자바스크립트 엔진 구동시 가장 최우선으로 해석
+        //할당 (Assignment) 구문은 런타임 과정에서 이루어지기 때문에 호이스팅되지 않는다.
+        //함수는 자신이 위치한 코드에 상관없이
+        //함수 선언문 형태로 정의한 함수의 유효범위는 전체 코드의 맨 처음부터 시작.
+        ex2(); //가능
+        function ex2(){
+            console.log("hi");
+        }
+        ex3(); //오류
+        var ex3 = function(){
+            console.log('hi2');
+        }
+    </script>
+
+
+    <script>
+        //함수 호출 또한 다른 언어와는 달리 자유로움
+        //함수를 호출할 때 함수 형식에 맞춰 인자를 넘기지 않아도 에러가 안남.(콘솔에도)
+        alert("원래매개변수1","오버된 매개변수"); //1개만 있어야함.
+        prompt("원래매개변수"); //1개 더 있어야 함.
+        //오류가 나도 알아내기 힘들다!
+    </script>
+
+
+    <script>
+        /*
+         기본 함수 틀
+            function 함수명 (매개변수, ...){
+         
+            }
+         최근 많이 쓰는 형태
+         var 함수명 = function(매개변수, ...){
+
+         }
+        */
+       var f_func1 = function(p_arr, p_func){
+           for(var i = 0; i < p_arr.length; i++){
+               p_func(i, p_arr[i]);
+           }
+       }
+       var f_func2 = function(p_inx, p_value){
+           document.write("인덱스 "+p_inx+" 값은 "+p_value+"입니다.<br>");
+       }
+       var v_arr = ['값1','값2','값3','값4'];
+       f_func1(v_arr,f_func2);
+    </script>
+
+
+    <script>
+        //중첩함수
+        function circle(radius){
+            var pi = 3.14;
+            function area(r){ //circle 안에서만 쓰이는 area함수
+                return r * r * pi;
+            }
+            return area(radius);
+        }
+        document.write('circle(5) :'+circle(5)+'<br/>');
+        document.write('<br/>');
+    </script>
+
+
+    <script>
+        //함수를 매개변수로 전달 -> 실행
+        function calltenTimes(input_callback){
+            for(var i = 0; i<10; i++){
+                input_callback();
+            }
+        }
+        var callback = function() {console.log('var callback')};
+        //함수를 매개변수로 전달
+        calltenTimes(callback);
+    </script>
+
+
+    <script>
+        //함수를 리턴
+        function returnFunction(){
+            return function(){
+                alert("안녕");
+            }
+        }
+        a = returnFunction(); // returnFunction을 실행해서 내부의 익명함수를 받은것
+        a(); //a 실행
+    </script>
+
+
+<script>
+        // 내장함수 중 알아두면 좋을것
+        //      타이머 함수
+        //      setTimeout(function, millisecond) : 일정 시간 후 함수를 한번 실행
+        //      setInterval(function, millisecond) : 일정 시간마다 함수를 반복
+        //      //아래함수는 위에함수를 중지하는 용도로 쓰임
+        //      clearTimeout(id) : 일정 시간 후 함수를 한 번 실행하는 것을 중지
+        //      clearInterval(id) : 일정시간마다 함수를 반복하는 것을 중단 
+         setTimeout(function(){document.write("2초가 지났습니다.(time)<br/>")},2000);
+         setInterval(function(){document.write("1초가 지났습니다.(interval)<br/>")},1000);
+     </script>
+
+
+
+</body>
+</html>

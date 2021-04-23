@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>윈도우 열기</title>
+    <script>
+        var newWin=null; // 새로 연 윈도우 기억
+        
+        function load(URL) {
+            window.open(URL, "myWin", "left=1000,top=300,width=400,height=300");
+        }
+        function closeNewWindow() {
+            if (newWin == null || newWin.closed) // 윈도우가 열리지 않았거나 닫힌 경우
+                return; // 윈도우가 없는 경우 그냥 리턴
+            else
+                newWin.close(); // 열어 놓은 윈도우 닫기
+        }
+    </script>
+</head>
+
+<body>
+    <h3>window.open()으로 윈도우 열기</h3>
+    <hr>
+    <a href="javascript:load('http://www.graceland.com')">
+        엘비스 프레슬리 홈 페이지</a><br>
+    <a href="javascript:load('http://www.universalorlando.com')">
+        유니버설 올랜드 홈 페이지</a><br>
+    <a href="javascript:load('http://www.disneyworld.com')">
+        디즈니월드 홈 페이지</a><br>
+    <a href="javascript:load('../javaScript/ex7a.html')">
+        나의 페이지 열기</a><br>
+    <button onclick="closeNewWindow()">팝업닫기</button>
+</body>
+
+</html>

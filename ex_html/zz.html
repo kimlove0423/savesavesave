@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .jb-box {
+            width: 200px;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .jb-box > video {
+            position: absolute;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+         }
+
+        .jb-text {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+        }
+
+        .jb-text p {
+            margin-top: -24px;
+            text-align: center;
+            font-size: 10vw;
+            font-style: italic;
+            font-variant: small-caps;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='jb-box'>
+        <video style="opacity: 0.2;" autoplay loop muted>
+            <source src="mp4/yammyramen.mp4" type="video/mp4">
+            지원하지 않습니다.
+        </video>
+        <div class="jb-text">
+            <p>Hello Kr World</p>
+        </div>
+    </div>
+</body>
+
+</html>

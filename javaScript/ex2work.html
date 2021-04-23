@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function roll(size) {
+            for(var i = 0; i <size; i++){
+                document.write('☆');
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- 
+    ☆☆☆☆☆☆☆★☆☆☆☆☆☆☆
+    ☆☆☆☆☆☆☆★☆☆☆☆☆☆☆
+    ☆☆☆☆☆☆★★★☆☆☆☆☆☆
+    ☆☆☆☆☆☆★★★☆☆☆☆☆☆
+    ☆☆☆☆☆★★★★★☆☆☆☆☆
+    ★★★★★★★★★★★★★★★
+    ☆☆☆★★★★★★★★★☆☆☆
+    ☆☆☆☆★★★★★★★☆☆☆☆
+    ☆☆☆☆★★★★★★★☆☆☆☆
+
+    ☆☆☆☆★★★☆★★★☆☆☆☆
+    ☆☆☆★★★☆☆☆★★★☆☆☆
+    ☆☆☆★★☆☆☆☆☆★★☆☆☆
+    ☆★☆☆☆☆☆☆☆☆☆☆☆★☆
+     을 그려보세요 -->
+     
+    <script>
+        var white_num = [[7, 7, 6, 6, 5,  0, 3, 4, 4],
+                    [4, 1, 4],
+                    [3, 3, 3], 
+                    [3, 5, 3], 
+                    [1, 11, 1]];
+        var black_num = [[1, 1, 3, 3, 5, 15, 9, 7, 7],
+                    [3, 3],
+                    [3, 3], 
+                    [2, 2], 
+                    [1, 1]];
+        
+        
+        document.write(white_num[0][0]);
+
+        var star = roll(white_num[0][0]);
+        document.write(star);
+
+        star = roll(1);
+        star();
+    </script>
+</body>
+</html>
