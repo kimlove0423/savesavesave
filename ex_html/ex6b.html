@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 200px;
+            animation: rotae 1.5s infinite,
+                    backgroun 1.5s infinite alternate;
+        }
+        @keyframes rotae{
+            /* perspective: 크기
+            3차원 변형에서 사용하는 속성으로 원래 위치에서 사용자가 있는 방향 or
+            반대 방향으로 잡아당기거나 밀어내는 원근감을 갖게 함
+            rotateX, rotateY 3차원 변형각도 */
+            from {transform: perspective(120px) rotateX(0deg) rotateY(0deg);}
+            50% {transform: perspective(120px) rotateX(-180deg) rotateY(0deg);}
+            to {transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);}
+        }
+        @keyframes backgroun{
+            from{background-color: red;}
+            50%{background-color: green;}
+            to{background-color: blue;}
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

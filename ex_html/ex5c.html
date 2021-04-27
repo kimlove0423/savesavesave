@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            cursor: url(cursor.cur), auto;
+        }
+        /* html{
+            cursor: none;
+        } */
+        #cursor_item{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            right: 0;
+            /* margin-top: -25px;
+            margin-left: 50px; */
+
+            transition-duration: 1s;
+            transition-timing-function: ease;
+            -webkit-animation: moveAgu 1s linear infinite;
+            animation: moveAgu 1s linear infinite; 
+            /* animation-name: moveAgu ;
+            animation-duration: 1s;
+            animation-iteration-count: infinite; */
+            
+        }
+  
+        @keyframes moveAgu {
+            to{
+                transform: rotate(0deg);
+            }
+            from{
+                transform: rotate(360deg);
+            } 
+        }
+    </style>
+    <script>
+        var h1;
+        var x, y;
+        var mouseFunc = function(e){
+            x = e.clientX;
+            y = e.clientY;
+            h1.innerHTML = 'x :'+x+'y :'+y;
+            cursor.style.transform = 'translate('+x+'px,'+y+'px)';
+            // cursor.style.animation = 'moveAgu 1s linear';
+        }
+        window.onload = function(){
+            cursor = document.getElementById('cursor_item');
+            h1 = document.getElementsByTagName('h1')[0];
+            document.addEventListener('mousemove', mouseFunc);
+        }
+    </script>
+</head>
+<body>
+    <h1>user cursor</h1>
+    <div id="cursor_item"></div>
+    <!-- <h3>cursor 만들기</h3>
+    <hr><hr><hr><hr><hr><hr> -->
+    <!-- <p style="cursor: auto;">auto</p>
+    <p style="cursor: crosshair;">crosshair</p>
+    <p style="cursor: default;">default</p>
+    <p style="cursor: pointer;">pointer</p>
+    <p style="cursor: move;">move</p>
+    <p style="cursor: e-resize;">e-resize</p>
+    <p style="cursor: ne-resize;">ne-resize</p>
+    <p style="cursor: nw-resize;">nw-resize</p>
+    <p style="cursor: n-resize;">n-resize</p>
+    <p style="cursor: se-resize;">se-resize</p>
+    <p style="cursor: sw-resize;">sw-resize</p>
+    <p style="cursor: s-resize;">s-resize</p>
+    <p style="cursor: w-resize;">w-resize</p>
+    <p style="cursor: text;">text</p>
+    <p style="cursor: wait;">wait</p>
+    <p style="cursor: help;">help</p>
+    http://www.cursor.cc -->
+</body>
+</html>
