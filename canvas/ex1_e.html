@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face{
+            font-family: 'fipps';
+            src:url("Fipps-Regular.otf");
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" style="background-color: aliceblue;" width="1000" height="300"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        context.strokeStyle = "black";
+
+        context.font = "50px fipps"
+        context.strokeText("적용 확인하기",50,250);
+    </script>
+    <textarea>fsdfsaff</textarea>
+    <br>
+    <button>텍스트 입력</button>
+    <p style="font-family: fipps;">fdfdfd</p>
+    <img src="/canvas/DinoSprites_doux.gif" width="200" alt="">
+</body>
+</html>

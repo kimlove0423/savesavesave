@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            padding: 2px 30px;
+            text-align: center;
+            font-size: 20px;
+        }
+        table{
+            width: 500px;
+        }
+        td{
+            border: black solid 1px;
+            text-align: center;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body onload="init();">
+    <h3>마우스를 누른 채 드래깅하여 그림을 그려보세요</h3>
+    <canvas id="myCanvas" width="500" height="400" style="background-color: aliceblue;"></canvas>
+    <script>
+        var canvas, context;
+        function init(){
+            canvas = document.getElementById('myCanvas');
+            context = canvas.getContext('2d');
+
+            context.lineWidth = 2; //선 굵기
+            context.strokeStyle = "black"; //선 색깔
+
+            canvas.addEventListener('mousemove', function(e){move(e)}, false);
+            canvas.addEventListener('mousedown', function(e){down(e)}, false);
+            canvas.addEventListener('mouseup', function(e){up(e)}, false);
+            canvas.addEventListener('mouseout', function(e){out(e)}, false);
+            
+        }
+
+        var startX = 0, startY = 0;
+        var dragging = false;
+        var clearBtn = false;
+        var penBtn = true;
+
+        function draw(curX, curY){
+            if(clearBtn){
+            var siz = context.lineWidth.valueOf();
+            context.clearRect(startX, startY, siz, siz);
+            return;
+            }
+            context.beginPath();
+            context.moveTo(startX, startY);
+            context.lineTo(curX, curY);
+            context.stroke();
+        }
+        function allclear(){
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function down(e){
+            startX = e.offsetX; 
+            startY = e.offsetY;
+            dragging = true;
+        }
+        function up(e){
+            dragging = false;
+        }
+        function move(e){
+            //마우스가 눌러지지 않았으면 리턴
+            if(!dragging){
+                return;
+            }
+            var curX = e.offsetX;
+            var curY = e.offsetY;
+            draw(curX, curY);
+            startX = curX;
+            startY = curY;
+        }
+        function out(e){
+            dragging = false;
+        }
+
+    </script>
+    <table>
+        <tr>
+            <td>색깔바꾸기</td>
+            <td colspan="3"><input type="color" id="inColor" value=""
+                onchange="context.strokeStyle = this.value"></td>
+        </tr>
+        <tr>
+            <td>굵기바꾸기</td>
+            <td><input type="button" value="2" 
+                onclick="context.lineWidth = this.value"></td>
+            <td><input type="button" value="5"
+                onclick="context.lineWidth = this.value"></td>
+            <td><input type="button" value="10"
+                onclick="context.lineWidth = this.value"></td>
+        </tr>
+        <tr>
+            <td>종류</td>
+            <td><input type="button" value="펜"
+                onclick=" penBtn=true, clearBtn=false "></td>
+            <td><input type="button" value="지우개"
+                onclick=" clearBtn=true, penBtn=false "></td>
+            <td><button onclick="allclear()">전체지우기</button></td>
+        </tr>
+    </table>
+</body>
+</html>

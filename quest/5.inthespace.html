@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    div {
+        position: absolute;
+    }
+    div img{
+        position: absolute;
+    }
+
+    #sun{
+        left: 500px; top: 300px;
+        width: 200px; height: 200px;
+    }
+
+    #moon{
+        width: 25px; height: 25px;
+    }
+
+    #earth{
+        width: 50px; height: 50px;
+    }
+    
+</style>
+<script>
+        window.onload=function(){
+            var sun=document.getElementById('sun');
+            var earth=document.getElementById('earth');
+            var moon=document.getElementById('moon');
+
+            //지구의 각도 값  
+            var earthAngle=0;
+
+            //달의 각도 값 
+            var moonAngle=0;
+
+            //태양의 값들
+            var sunLeft = sun.offsetLeft.valueOf();
+            var sunWidth = sun.offsetWidth.valueOf();
+            var sunTop = sun.offsetTop.valueOf();
+            var sunHeight = sun.offsetHeight.valueOf();
+
+            //지구의 값들
+            var earthWidth =earth.offsetWidth.valueOf();
+            var earthHeigth =earth.offsetHeight.valueOf();
+
+            //달의 값들
+            var moonWidth =moon.offsetWidth.valueOf();
+            var mooonHeight =moon.offsetHeight.valueOf();
+
+            setInterval(()=>{
+                //각도로 지구와 달의 좌표(x,y)값을 구한다 
+                var earthX = sunLeft+ earthWidth + moonWidth 
+                            + sunWidth*Math.cos(earthAngle);
+                var earthY = sunTop + earthHeigth + mooonHeight
+                            + sunHeight*Math.sin(earthAngle);
+                var moonX= earthX + moonWidth/2
+                            + earthWidth * Math.cos(moonAngle);
+                var moonY= earthY + mooonHeight/2
+                            + earthHeigth * Math.sin(moonAngle);
+                // 위치 이동
+                earth.style.left=earthX +'px';
+                earth.style.top=earthY+'px';
+                moon.style.left=moonX +'px';
+                moon.style.top=moonY +'px';
+
+                //각도값을 시간에 따라 증가시킴
+                earthAngle+=0.1;
+                moonAngle+=0.3;
+
+            },33);
+
+        };
+</script>
+<body>
+    <div>
+    <img src="/object/images2/sun.png" id="sun" alt="">
+    <img src="/object/images2/earth.png" id="earth" alt="">
+    <img src="/object/images2/moon.png" id="moon" alt="">
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" style="background-color: aliceblue;" width="400" height="400"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        var arrIndex = [];
+        context.beginPath(); //빈경로 생성
+        for(var i = 10; i<canvas.offsetWidth.valueOf(); i=i+40){
+            context.moveTo(i,10); //시작점
+            context.lineTo(i,canvas.offsetHeight.valueOf()-30);
+            context.moveTo(10,i);
+            context.lineTo(canvas.offsetWidth.valueOf()-30,i);
+            arrIndex.push(i); //x와 y값이 동일하여 하나로 씀
+        }
+        context.strokeStyle = "magenta";
+        context.stroke();
+
+        var x, y, xr, yr;
+        var mouseFunc = function(e){
+            x = e.clientX;
+            y = e.clientY;
+            for(var i = 0; i<arrIndex.length-1; i++){
+                if(arrIndex[i]< x && x <arrIndex[i+1]){
+                    console.log(arrIndex[i]);
+                    xr = arrIndex[i];
+                }
+            }
+            for(var j = 0; j<arrIndex.length-1; j++){
+                if(arrIndex[j]< y && y <arrIndex[j+1]){
+                    console.log(arrIndex[j]);
+                    yr = arrIndex[j];
+                }
+            }
+            context.beginPath();
+            context.fillStyle = 'violet';
+            context.rect(xr,yr,40,40);
+            context.fill(); //선 체우기
+        }
+
+        window.onload = function(){
+            cursor = document.getElementById('cursor_item');
+            document.addEventListener('mouseup', mouseFunc);
+        }
+    </script>
+</body>
+</html>

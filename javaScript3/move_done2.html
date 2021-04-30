@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 가변글꼴
+        px는 기본적으로 사용되는 단위(픽셀단위로 고정값)
+        em은 부모의 요소를 기준으로 크기를 정함
+        1em = 16px = 100% = 12pt */
+        body{
+            font-size: 16px;
+        }
+        #em_div{
+            font-size: 1.5em;
+        }
+        p{
+            font-size: 2em;
+        }
+        span{
+            font-size: 2rem;
+        }
+        /* 반응형폰트 vw(viewport width) vh(viewport higth)
+        윈도우 해상도가 아닌 현재 브라우저 창의 크기를 기준으로 변형
+        현재 창의 크기를 1000px라고 가정하고 1vw는 100분의 1 사이즈인 10px가 됨 */
+        #vw_div{
+            font-size: (3vw, 3vh);
+        }
+    
+    </style>
+</head>
+<body>
+    body 전체에 기본 폰트 16px 설정
+    <div id="em_div">div에 1.5em -> 24px
+        <p> p에 2em을 주면 24*2 = 48px </p>
+        <span> rem은 시조부모(body)의 영향만을 받음</span>
+    </div>
+    <div id="vw_div"><p>반응형 폰트</p></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" style="background-color: aliceblue;" width="500" height="300"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        var angle = 0;
+        var r = 100; //반지름
+
+        for(var i = 0; i<180; i++){
+            x = r * Math.cos(angle);
+            // x = i;
+            y = r * Math.sin(angle);
+
+            //Math.sin(각a) -> 각a에 대한 sin값 반환
+            //Math.cos(각a) -> 각a에 대한 cos값 반환
+            //x = cos(각도) * 반지름
+            // y = sin(각도) * 반지름
+            context.fillStyle = 'blue';
+            context.font = "20px";
+            context.lineWidth = 3;
+            context.textAlign = "left";
+            context.fillText( "●", 200 + x, 200 + y);
+            angle += 1;
+        }
+    </script>
+    <canvas style="background-color: aqua;" width="150" height="100"></canvas>
+    <canvas style="background-color: bisque;" width="150" height="100"></canvas>
+    <canvas style="background-color: coral;" width="150" height="100"></canvas>
+</body>
+</html>
