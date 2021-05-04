@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지 만들기 앞서서 트캣문</title>
+</head>
+<body>
+    <script>
+        var msg = "";
+        function test1(){
+            try {
+                allert('hello');
+            } catch (error) {
+                msg = "다음과 같은 오류가 발생했습니다." + error.message;
+                alert(msg);
+            }
+        }
+        var msg2 = "";
+        function test2(){
+            try {
+                allert('hello');
+            } catch (error) {
+                msg2 = "다음과 같은 오류가 발생했습니다." + error.message;
+                alert(msg2);
+            } finally {
+                document.write("문제 잡은 후 실행");
+            }
+        }
+    </script>
+    <input type="button" value="테스트1" onclick="test1();">
+    <input type="button" value="테스트2" onclick="test2();">
+</body>
+</html>

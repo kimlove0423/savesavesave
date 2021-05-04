@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 스토리지 중 로컬 스토리지 예제</title>
+</head>
+<body>
+    <h3>로컬 스토리지에 저장/검색</h3>
+    품목명 : <input type="text" id="item">
+    개수 : <input type="text" id="count">
+    <button id="save" onclick="store();">저장</button>
+    <button id="retrieve" onclick="retrieve();">검색</button>
+    <button id="delete" onclick="f_delete();">삭제</button>
+    <div id="div_1"></div>
+    <script>
+        function store(){
+            var item = document.getElementById('item');
+            var count = document.getElementById('count');
+            if(!window.localStorage){
+                alert("로컬 스토리지를 지원하지 않습니다.");
+                return;
+            }
+            localStorage.setItem(item.value, count.value);
+            f_print();
+        }
+        function f_print(){
+            var item = document.getElementById('item');
+            var count = document.getElementById('count');
+            var str = "";
+            for(a in localStorage){
+                str += "key :" + a + "/value :" + localStorage[a] + "<br>"; 
+            }
+            var div_1 = document.getElementById('div_1');
+            div_1.innerHTML = str;
+        }
+        function retrieve(){
+            var item = document.getElementById('item');
+            var count = document.getElementById('count');
+            if(!window.localStorage){
+                alert("로컬 스토리지를 지원하지 않습니다.");
+                return;
+            }
+            if(localStorage.length > 0){
+                f_print();
+            }else{
+                var div_1 = document.getElementById('div_1');
+                div_1.innerHTML = "저장 데이터가 없습니다.";
+            }
+        }
+        function f_delete(){
+            var item = document.getElementById('item');
+            localStorage.removeItem(item.value);
+        }
+    </script>
+</body>
+</html>

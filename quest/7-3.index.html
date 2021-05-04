@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #button {
+            /* width: 400; */
+            display: none;
+        }
+
+        div p {
+            font-style: italic;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="topmsg">
+        <p>top msg</p>
+    </div>
+    <div id="countmsg">
+        <p>count msg</p>
+    </div>
+    <div id="button">
+        <button>로그인</button>
+    </div>
+    <script>
+        // var topPlace;
+        var topPlace = document.getElementById("topmsg").firstElementChild;
+        var middlePlace = document.getElementById("countmsg").firstElementChild;
+        var loginMem = document.cookie.replace("username=", "");
+
+        var i = 0;
+
+        
+        function mainpg() {
+            return function () {
+                if (loginMem != "") {
+                    document.getElementById("button").style.display = "none";
+                    topPlace.textContent = loginMem + "님이 로그인 하였습니다.";
+                    middlePlace.textContent = "접속 남은시간:"+(60-i)+"초";
+                } else {
+                    document.getElementById("button").style.display = "block";
+                    topPlace.textContent = "로그인 하십시오";
+                    middlePlace.textContent = "접속 남은시간:"+(60-i)+"초";
+                }
+                i++;
+                if (i > 59){
+                    stopme();
+                }
+            }
+        }
+        a = setInterval(mainpg(), 1000);
+
+        function stopme(){
+            clearInterval(a);
+        }
+       
+    </script>
+</body>
+
+</html>

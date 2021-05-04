@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn_login(){
+            var id = document.getElementById('id');
+            var pw = document.getElementById('pw');
+            var sign = document.getElementById('sign');
+            if(!window.localStorage){
+                alert('로컬 스토리지를 지원하지 않습니다.');
+                return;
+            }
+            var val = localStorage.getItem(id.value);
+            if(val == null){
+                alert(id.value + '의 회원 정보가 없습니다.')
+                sign.focus();
+            }else{
+                if(pw.value == val){
+                    location.href = 'ex1a.html';
+                }else{
+                    alert('비밀번호가 다릅니다.');
+                    pw.focus();
+                }
+            }
+        }
+    </script>
+    <h3>로그인</h3>
+    <hr>
+    id : <input type="text" id="id" size="10">
+    pw : <input type="password" id="pw" size="10">
+    <button id="" type="button" onclick="fn_login();">접속</button>
+    <button id="sign" type="button" onclick="window.open('ex1f_join.html', '_blank', 'top=300', 'left=300', 'width=300', 'height=300')">가입</button>
+</body>
+</html>

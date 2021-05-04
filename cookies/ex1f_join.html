@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>회원 가입</h3>
+    <hr>
+    id : <input type="text" id="id" size="10">
+    pw : <input type="password" id="pw" size="10">
+    <button id="save" onclick="fn_save();">가입</button>
+    <button id="retrieve" onclick="fn_retrieve();">조회</button>
+    <button id="login" onclick="location.href='ex1f_login.html'">로그인</button>
+    <script>
+        var id = document.getElementById('id');
+        var pw = document.getElementById('pw');
+        function fn_save(){
+            if(!window.localStorage){
+                alert("로컬 스토리지를 지원하지 않습니다.");
+                return;
+            }
+            localStorage.setItem(id.value , pw.value);
+        }
+        function fn_retrieve(){
+            if(!window.localStorage){
+                alert("로컬 스토리지를 지원하지 않습니다.");
+                return;
+            }
+            var val = localStorage.getItem(id.value);
+            if(val == null){
+                alert(id.value + "는 회원내역에 없습니다.");
+            }else{
+                pw.value = val;
+            }
+        }
+    </script>
+</body>
+</html>
