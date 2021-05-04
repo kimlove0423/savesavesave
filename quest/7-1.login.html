@@ -23,10 +23,10 @@
           }else{
             if(pw.value == val){
               alert(id.value+"님 환영합니다")
-              var setCookies = function(name, value){
-                document.cookie = name + '=' + value +';max-age=600;path=/';
-              };
-              setCookies("username",id.value);
+
+              var expire = new Date();
+              expire.setTime(expire.getTime() + (60*1000));
+              // ("username", id.value, expire);
 
               location.href = '7-3.index.html';
             }else{
@@ -36,6 +36,11 @@
         }
     }
 
+    // function SetCookies(name, value, expireDate){
+    //         var cookieStr = name + "=" + escape(value) 
+    //         + ((expireDate == null) ?"":("; expires =" + expireDate.toGMTString()));
+    //         document.cookie = cookieStr;
+    //     }
 </script>
 	<div id="container">
     <h3>로그인</h3>
