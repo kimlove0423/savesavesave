@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td{
+            border: 1px solid black;
+            position: relative;
+            width: 1000;
+        }
+        input{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="div_1">
+        <form action="#" id="id_form">
+            <table>
+                <tr>
+                    <p><td colspan="4">방명록</td></p>
+                </tr>
+                <tr>
+                    <td>이름</td><td><input type="text" id="b_name"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea name="" id="b_content" cols="40" rows="10"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="button" value="저장" onclick="fn_save()"><input type="reset" value="취소" id="b_cancle"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        function fn_save(){
+            var b_name = document.getElementById('b_name').value;
+            var b_content = document.getElementById('b_content').value;
+            var v_tblName = 'Board';
+            var v_tableData = [];
+            var v_pk = 1;
+
+            if(localStorage.getItem(v_tblName)){
+                v_tableData = JSON.parse(localStorage.getItem(v_tblName));
+                if(v_tableData.length != 0){
+                    v_pk = v_tableData[v_tableData.length - 1].pk + 1;
+                }
+            }
+            var v_gul = {};
+            v_gul.pk = v_pk;
+            v_gul.name = b_name;
+            v_gul.content = b_content;
+            v_gul.date = (new Date()).toLocaleDateString();
+
+            v_tableData.push(v_gul); 
+            localStorage.setItem(v_tblName, JSON.stringify(v_tableData));
+
+            alert('정상적으로 작동');
+            document.getElementById('id_form').reset();
+        }
+    </script>
+</body>
+</html>

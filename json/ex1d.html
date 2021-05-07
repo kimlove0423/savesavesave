@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="ajaxBtn">request</button>
+    <select name="set" id="ajaxSel" onchange="changeSel()">
+        <option value="" id="opDefault">왼쪽의 버튼을 눌러주세요</option>
+    </select>
+    <div id="detail">
+        <p id="detail_p"></p>
+    </div>
+
+    <script>
+        var req;
+        var sel = document.getElementById("ajaxSel");
+        var op;
+        var dv = document.getElementById("detail");
+        
+        document.getElementById('ajaxBtn').addEventListener('click', makeReq);
+
+        function makeReq(){
+            op = document.getElementById("opDefault");
+            op.innerHTML = "셀렉트박스가 활성화되었습니다.";
+            req = new XMLHttpRequest();
+            req.onreadystatechange = alertContents;
+            req.open('GET', 'https://api.upbit.com/v1/market/all');
+            req.send();
+        }
+        function alertContents(){
+            if(req.readyState == XMLHttpRequest.DONE){
+                if(req.status == 200){
+                    var order = JSON.parse(req.responseText);
+                    for(var i in order){
+                        op = document.createElement("option", i);
+                        op.innerHTML = order[i].korean_name;
+                        sel.appendChild(op);
+                    }
+                }else{
+                    alert("wrong");
+                }
+            }
+        }
+        
+        function changeSel(){
+            var selectValue = sel.options[sel.selectedIndex].value;
+            var selectNo = sel.options[sel.selectedIndex].index;
+            var res = "";
+            if(req.readyState == XMLHttpRequest.DONE){
+                if(req.status == 200){
+                    var order = JSON.parse(req.responseText);
+                    console.log(order[selectNo-1]);
+                    selectNo = order[selectNo-1];
+                    
+                    var dp = document.getElementById("detail_p");
+                    for(var i in selectNo){
+                        console.log(selectNo[i]);
+                        // dv.append("["+i+"]:"+res[i]);
+                        res += "["+i+"]:"+selectNo[i]+"\n";
+                        document.getElementById("detail_p").innerHTML = res;
+                    }
+
+                }else{
+                    alert("wrong");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
