@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table, tr, td{
+        table,
+        tr,
+        td {
             border: 1px solid black;
             position: relative;
-            width: 1000px;
+            width: 400px;
         }
-        div{
+
+        div {
             width: 33%;
             height: 100%;
             display: inline-block;
@@ -19,6 +23,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="center"></div>
     <script>
@@ -31,51 +36,38 @@
         var v_tblStr = "<br><br>";
         v_tblStr += "<table>";
         v_tblStr += "<tr><td>순번</td><td>체크</td><td>이름</td><td>내용</td><td>등록일</td></tr>";
-        for(var i = 0; i<v_total; i++){
+        for (var i = 0; i < v_total; i++) {
             v_tblStr += "<tr>";
-            v_tblStr += "<td>"+(i+1)+"</td>";
-            v_tblStr += "<td><input type='checkbox' name='nm_del' value='"+v_localData[i].pk+"'></td>";
-            v_tblStr += "<td>"+v_localData[i].name + "</td>";
-            v_tblStr += "<td>"+v_localData[i].content + "</td>";
-            v_tblStr += "<td>"+v_localData[i].date + "</td>";
+            v_tblStr += "<td>" + (i + 1) + "</td>";
+            v_tblStr += "<td><input type='checkbox' name='nm_del' value='" + v_localData[i].pk + "'></td>";
+            v_tblStr += "<td>" + v_localData[i].name + "</td>";
+            v_tblStr += "<td>" + v_localData[i].content + "</td>";
+            v_tblStr += "<td>" + v_localData[i].date + "</td>";
             v_tblStr += "</tr>";
         }
         v_tblStr += "</table>";
+        v_tblStr += "<button id='btn' onclick='fn_del()'>삭제</button>";
         v_disp.innerHTML = v_tblStr;
-        function fn_del(){
-            var inputnm = document.getElementsByName('nm_del');
-            var len = inputnm.length;
-            var arr = [];
-            for(var i =0; i<len; i++){
-                if(inputnm[i].checked){
-                // console.log(inputnm[i].value);
-                arr.push(inputnm[i].value);
-                console.log(arr);         
+        function fn_del() {
+            var check = document.getElementsByName('nm_del');
+            var delList = [];
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].checked) {
+                    delList.push(check[i].value);
                 }
             }
-
-            for(var j =0; j<arr.length; j++){
-                if(arr[j] == v_localData[j].pk){ 
-                    console.log(v_localData[j].name+'삭제!')}
+            console.log(delList);
+            for (var j = 0; j < delList.length; j++) {
+                for (var i = 0; i < v_localData.length; i++) {
+                    if (v_localData[i].pk == delList[j]) {
+                        v_localData.splice(i, 1);
+                    }
+                }
             }
-            
-
-            // for(var i = 0; i<slectedList.length; i++){
-            //     var selpk = slectedList[i].value;
-            //     // console.log(selpk);
-            //     // for(var j = v_total-1; j>0; j--){
-            //         if(v_localData[i].pk == selpk){
-            //             var num = i;
-            //             // delete v_localData[selpk]; 인덱스를 남기고 삭제. pk번째 null.
-            //             // v_localData.splice(i,1);
-            //             // localStorage.setItem(v_tblName, JSON.stringify(v_localData));
-            //             // i--; 
-            //         }
-            //     // }
-            // }
-            // // location.reload();
+            localStorage.setItem(v_tblName, JSON.stringify(v_localData));
+            location.reload();
         }
     </script>
-    <button id="btn" onclick="fn_del()">삭제</button>
 </body>
+
 </html>

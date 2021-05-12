@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.6.0.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $('a[title]').css('background-color', 'yellow');
+            $('a[href="http://www.youtube.com"]').css('background-color','red');
+
+            //^ 특성값을 가지고 있으며 접두사로 value가 값에 포함되어 있으면 이 요소를 선택한다
+            $('a[href^="mailto"]').css('background-color','aqua');
+            //$ 특성값을 가지고 있으며 접미사로 value가 값에 포함되어 있으면 선택
+            $('a[href$="disney"]').css('background-color','pink');
+            //" 특성값을 가지고 있으며 
+            $('a[href"="google"]').css('background-color','green');
+        });
+    </script>
+</head>
+<body>
+    <h1>탐색 선택자</h1>
+    <ul>
+        <li><a href="http://www.naver.com" title="naver move">네이버</a></li>
+        <li><a href="mailto:ciycc@naver.com">네이버관계자에게</a></li>
+        <li><a href="http://www.google.com">구글</a></li>
+        <li><a href="http://www.youtube.com">유투브</a></li>
+        <li><a href="http://www.disney.com">디즈니</a></li>
+    </ul>
+</body>
+</html>

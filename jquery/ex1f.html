@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('button').click(function(){
+                alert($('#dog').attr('src'));
+                $('#dog').attr('src','/object/img/dog2.jpg')
+            });
+        });
+    </script>
+</head>
+<body>
+    <img src="/object/img/dog.jpg" id="dog" width="110px" height="150px" alt="" style="position: relative;"><br>
+    <button>attr()</button>
+</body>
+</html>

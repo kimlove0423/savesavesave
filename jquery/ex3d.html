@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.6.0.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            //고정적이지 않은 데이터를 선택할때 유용
+            $('#menu li:first').css('background-color', 'yellow');
+            $('#menu li:last').css('background-color', 'pink');
+        });
+    </script>
+</head>
+<body>
+    <h1>탐색 선택자</h1>
+    <ul id="menu">
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.6.0.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $('*').css('border','1px solid blue');
+            $('#tit').css('background-color','yellow');
+            $('.direct').css('background-color','red');
+            $('h1,h3').css('color','grey');
+        });
+        </script>
+</head>
+<body>
+    <h1 id="tit">제이쿼리 전체요소에 파란색 두께의 실선생성</h1>
+    <h2>직전 선택자 및 관계 선택자</h2>
+    <h3 class="direct">클래스 선택</h3>
+    <span class="direct">클래스 선택</span>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+    <style>
+        body, html{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        div{
+            background-color: yellowgreen;
+            position: absolute;
+            border: 1px;
+            height: 100px;
+            width: 50%;
+        }
+        .right{
+            left: 50%;
+        }
+        .buttons{
+            background-color: ivory;
+            top: 100px;
+            width: 100%;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('#apbtn').click(function(){
+                $('#1').append("<b style = 'color:red'> Hello! </b>");
+            });
+            $('#prebtn').click(function(){
+                $('#2').append("<b style = 'color:red'> Hello! </b>");
+            });
+            $('#rmbtn').click(function(){
+                $('.container').remove();
+            });
+            $('#embtn').click(function(){
+                $('.container').empty();
+            });
+            $('#rmbtn2').click(function(){
+                $('b').remove();
+            });
+
+            $(document).on('click','b',function(){
+                if($(this).closest('div').attr('id') == '1'){
+                    $('#2').append($(this).clone());
+                }else{
+                    $('#1').append($(this).clone());
+                }
+                $(this).remove();
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="1" class="left" style="background-color: rosybrown;">left</div>
+    <div id="2" class="right">right</div>
+    
+    <!-- <p id="1">I would like to say:</p> -->
+    <div class="buttons">
+        <button id="apbtn">1append</button>
+        <button id="prebtn">2append</button>
+        <button id="rmbtn2">remove</button>
+    </div>
+    <!-- <div class="container">
+        <p class="hello">hello</p>
+        <p class="goodbye">goodbye</p>
+    </div>
+    <button id="rmbtn">remove()</button>
+    <button id="embtn">empty()</button> -->
+</body>
+</html>

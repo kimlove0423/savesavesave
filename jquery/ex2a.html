@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.6.0.js"></script>
+    <title>Document</title>
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        div{
+            width: 500px;
+            height: 600px;
+            overflow: scroll;
+            float: left;
+        }
+        /* #center2{
+            left: 50%;
+        } */
+        td{
+            border: black 1px solid;
+            margin: 0;
+            padding: 0;
+        }
+        tr{
+            border: black 1px solid;
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            border: black 1px solid;
+            width: 100%;
+        }
+        table tr:first-child{
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                searchAjax();
+            });
+            $(document).on('click','tr',function(){
+                $('#center tr').css('background-color','white');
+                $(this).css('background-color','yellow');
+                
+                var coinid = $(this).children().eq(1).text();
+                $.ajax({
+                    url: "https://api.upbit.com/v1/ticker?markets="+coinid
+                    ,dataType: "json"
+                    , success: function (data) {
+                        fn_dataRead2(data[0]);
+                    }
+                    , error(e) {
+                    console.log(e);
+                    }
+                });
+            });
+        });
+        function searchAjax() {
+            $.ajax({
+                url: "http://api.upbit.com/v1/market/all"
+                , dataType: "json"
+                , success: function (data) {
+                    fn_dataRead(data);
+                }
+                , error(e) {
+                    console.log(e);
+                }
+            });
+        }
+        function fn_dataRead(jsonData) {
+            console.log(jsonData);
+            var v_disp = document.getElementById('center');
+            var v_localData = jsonData;
+            var v_total = v_localData.length;
+            console.log(v_total);
+            var v_tblStr = "<br><br>";
+            v_tblStr += "<table>";
+                v_tblStr += "<tr><td>No</td><td>market</td><td>korean name</td><td>english name</td></tr>";
+                for (var i = 0; i < v_total; i++) {
+                v_tblStr += "<tr>";
+                v_tblStr += "<td>" + (i + 1) + "</td>";
+                v_tblStr += "<td>" + v_localData[i].market + "</td>";
+                v_tblStr += "<td>" + v_localData[i].korean_name + "</td>";
+                v_tblStr += "<td>" + v_localData[i].english_name + "</td>";
+                v_tblStr += "</tr>";
+            }
+            v_tblStr += "</table>";
+            v_disp.innerHTML = v_tblStr;
+        }
+        function fn_dataRead2(jsonData) {
+            var v_disp = document.getElementById('center2');
+            // var v_localData = jsonData;
+            var v_total = Object.keys(jsonData).length;
+            var v_tblStr = "<br><br>";
+            v_tblStr += "<table>";
+                v_tblStr += "<tr><td>col</td><td>value</td></tr>";
+                for (var i = 0; i < v_total; i++) {
+                v_tblStr += "<tr>";
+                v_tblStr += "<td>" + Object.keys(jsonData)[i] + "</td>";
+                v_tblStr += "<td>" + jsonData[Object.keys(jsonData)[i]] + "</td>";
+                v_tblStr += "</tr>";
+            }
+            v_tblStr += "</table>";
+            v_disp.innerHTML = v_tblStr;
+        }
+
+    </script>
+</head>
+
+<body>
+    <button>button</button><br>
+    <div id="center"></div>
+    <div id="center2"></div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#1').click(function(){
+                $('#dog').animate({left : '100px'}).animate({left : '0px'});
+            });
+            $('#2').click(function(){
+                $('#dog').fadeOut('slow');
+            });
+            $('#2').dblclick(function(){
+                $('#dog').fadeIn('slow');
+            });
+            $('#3').click(function(){
+                $('#dog').fadeOut('fast').slideDown('slow');
+            });
+            $('#text').click(function(){
+                alert($('#target').val());
+                $('#target').val($('#target').val().replaceAll('.',''));
+            });
+            $('#4').on('blur keyup', function(){
+                // $(this).val($(this).val().replace(/(\.\d{1})\d+/g,''));
+                // if(($(this).val().match(/\./g).length)>1){
+                //     $(this).val("");
+                // }
+                $(this).val($(this).val().replace(/[^ㄱ-헿\s]/g,''));
+                
+            });
+        });
+    </script>
+</head>
+<body>
+    정규식활용하기 <input type="text" id="4">
+    <hr>
+    <button id="1">animate</button>
+    <button id="2">fadein fadeout</button>
+    <button id="3">method chaning</button><br>
+    이름 : <input type="text" id="target" value="">
+    <button id="text">value</button><br>
+    <img src="/ex_html/img/dog.jpg" id="dog" width="110px" height="150px" alt="" style="position: relative;"><br>
+</body>
+</html>
