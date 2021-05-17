@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+        .red{
+            background-color: red;
+        }
+    </style>
+<script>
+        $(document).ready(function(){
+            // // class 명 추가
+            // $(document).on('click','p', function(){
+            //     $(this).addClass('red');
+            // });
+            // // class 명 삭제
+            // $(document).on('dblclick','p', function(){
+            //     $(this).removeClass('red');
+            // });
+
+            // toggleClass 있으면 제거 없으면 추가.
+            $(document).on('click','p', function(){
+                alert($(this).hasClass('red')); //있으면 t 없으면 f
+                $(this).toggleClass('red');
+            });
+        });
+</script>
+</head>
+<body>
+    <p>내용1</p>
+    <p>내용2</p>
+    <p>내용3</p>
+    <p>내용4</p>
+    <p>내용5</p>
+    <p>내용6</p>
+    <p>내용7</p>
+</body>
+</html>

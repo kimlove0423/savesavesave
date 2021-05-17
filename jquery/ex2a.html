@@ -48,9 +48,10 @@
             $("button").click(function () {
                 searchAjax();
             });
-            $(document).on('click','tr',function(){
+            $(document).on('click','#center tr',function(){
                 $('#center tr').css('background-color','white');
                 $(this).css('background-color','yellow');
+                // $(this).siblings().css('background-color','white'); 나를 제외한 형제요소
                 
                 var coinid = $(this).children().eq(1).text();
                 $.ajax({

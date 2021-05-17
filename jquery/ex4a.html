@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!--
+        get: 값이 주소표시줄에 보임. 보안상 위험! 용량제한이 있음(공격에 취약. 서버에서 막는게 필요).
+        post: 주소표시줄에 보이지 않음. 대신 한글이 깨짐! 인코딩 필요. 용량제한이 없음.
+    -->
+
+    <form action="http://localhost:8080/study/01basic/07requestAttribute.jsp" method="get">
+        이름 <input type="text" name="v_name"><br>
+        아이디 <input type="text" name="v_id"><br>
+        <input type="submit" value="전송">
+        <input type="reset" name="삭제">
+    </form>
+
+    <form action="http://localhost:8080/study/01basic/07requestAttribute.jsp" method="POST" onsubmit="return fn_check();">
+        이름 <input type="text" name="v_name"><br>
+        아이디 <input type="text" name="v_id"><br>
+        <input type="submit" value="전송">
+        <input type="reset" name="삭제">
+    </form>
+
+<script>
+    function fn_check(){
+        alert("전송가능");
+        return true;
+    }
+</script>
+</body>
+</html>

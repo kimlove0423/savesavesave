@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-3.6.0.js"></script>
+    <title>Document</title>
+    <style>
+        #id_list{
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            overflow: scroll;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('#id_sch').on("click", function(){
+                var v_pk = $("#id_category").val();
+                var v_schWord = $("#id_keyword").val();
+                console.log(v_schWord);
+                var v_datas = JSON.parse(localStorage.getItem(v_tblName));
+                var v_localData = [];
+                for(var i = 0; i<v_datas.length; i++){
+                    if(v_pk == 'pk'){
+                        if(v_datas[i][v_pk] == v_schWord){
+                            v_localData.push(v_datas[i]);
+                        }
+                    }else{
+                        // indexOf: 텍스트가 있다면 인덱스값, 없다면 -1 을 반환
+                        if(v_datas[i][v_pk].indexOf(v_schWord)!=-1){
+                            v_localData.push(v_datas[i]);
+                        }
+                    }
+                }
+                if(v_localData.length == 0){
+                    alert("검색 데이터가 없음");
+                    f_list(v_datas);
+                }else{
+                    f_list(v_localData);
+                }
+            });
+        });
+        var v_tblName = "Board";
+        // var v_tblstr = "";
+        window.onload = function(){
+            var v_datas = JSON.parse(localStorage.getItem(v_tblName));
+            f_list(v_datas);
+            console.log(v_datas);
+        }
+        function f_list(v_datas){
+            var v_tblstr = "<table width = 480 border=1>";
+                for(var i = 0; i<v_datas.length; i++){
+                    v_tblstr += "<tr>";
+                        v_tblstr += "<td>" + v_datas[i].pk + "</td>";
+                        v_tblstr += "<td>" + v_datas[i].name + "</td>";
+                        v_tblstr += "<td>" + v_datas[i].content + "</td>";
+                        v_tblstr += "<td>" + v_datas[i].date + "</td>";
+                        v_tblstr += "</tr>";
+                }
+            v_tblstr +="</table>";
+            document.getElementById("id_list").innerHTML = v_tblstr;
+        }
+    </script>
+</head>
+<body>
+    <select name="" id="id_category">
+        <option value="pk">글번호</option>
+        <option value="name">이름</option>
+        <option value="content">내용</option>
+    </select>
+    <input type="text" id="id_keyword" value="">
+    <input type="button" id="id_sch" value="검색">
+    <div id="id_list"></div>
+</body>
+</html>

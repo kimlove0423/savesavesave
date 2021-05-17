@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-3.6.0.js"></script>
     <title>Document</title>
     <style>
         body{
@@ -15,20 +16,18 @@
         }
         div{
             text-align: center;
-            display: table-cell;
             vertical-align: middle;
-        }
-        .bubble{
-            position: relative;
+            position: absolute;
             width: 100px;
             height: 42px;
+            left: 0;
+            top: 0;
             background-color: black;
             color: blanchedalmond;
             opacity: 0.6;
             font-size: 1.2em;
             border-radius: 10px;
-            animation: bubblepop 2s forwards;
-            /* transform: translate() */
+            animation: bubblepop 2.5s forwards;
         }
         /* .bubbletxt{
             height: 100%;
@@ -45,20 +44,35 @@
         var winW, winHm, rX, rY;
         winW = window.innerWidth;
         winH = window.innerHeight;
-        rX = Math.random()*winW +1;
-        rY = Math.random()*winH +1;
-        console.log(rX,rY);
-
-        var getBu = document.getElementsByClassName('bubble');
-        getBu.style.transform = 'translate('+rX+'px, '+rY+'px)';
+        var rXlist = [];
+        var rYlist = [];
+        $(document).ready(function(){
+            for(var i = 0; i<10; i++){
+                rX = Math.random()*winW +1;
+                rY = Math.random()*winH +1;
+                console.log(rX,rY);
+                rXlist.push(rX);
+                rYlist.push(rY);
+            }
+            console.log(rXlist);
+            console.log(rYlist);
+            for(var i = 0; i<rXlist.length; i++){
+                $('.bubble'+i).css('left', rXlist[i]+'px');
+                $('.bubble'+i).css('top', rYlist[i]+'px');
+            }
+        });
     </script>
 </head>
 <body>
-    <div class="bubble">
-        Bored
-    </div>
-    <div class="bubble">
-        Bored2
-    </div>
+    <div class="bubble0">bubble0</div>
+    <div class="bubble1">bubble1</div>
+    <div class="bubble2">bubble2</div>
+    <div class="bubble3">bubble3</div>
+    <div class="bubble4">bubble4</div>
+    <div class="bubble5">bubble5</div>
+    <div class="bubble6">bubble6</div>
+    <div class="bubble7">bubble7</div>
+    <div class="bubble8">bubble8</div>
+    <div class="bubble9">bubble9</div>
 </body>
 </html>

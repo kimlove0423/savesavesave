@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+        $(document).ready(function(){
+            var a = 'ids';
+            for(var i = 0; i<=3; i++){
+                alert($("#"+(a+i)).val());
+            }
+        });
+</script>
+</head>
+<body>
+    <input type="text" id="ids0" value="0" disabled>
+    <input type="text" id="ids1" value="1" disabled>
+    <input type="text" id="ids2" value="2" disabled>
+    <input type="text" id="ids3" value="3" disabled>
+</body>
+</html>
