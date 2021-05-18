@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
+
+    <script>
+        var userData = null; //데이터를 담아놓을 공간
+        var currentPage = 0; //현재페이지
+        var pages = "";
+        var page_size = 10; // 한페이지에 들어갈 tr 
+
+        function fn_search() {
+            $.ajax({
+                url: "http://api.upbit.com/v1/market/all"
+                , dataType: "json"
+                , success: function (data) {
+                    userData = data;
+                    pages = paginate(data, page_size);
+                    pageLi = "";
+                    for (var i = 0; i < pages.length; i++) {
+                        index = 1 + i;
+                        pageLi += '<li onclick = "pageChange(' + i + ')" id="page_' + index + '" class="page-item list-item"><a class="page-link href="javascript:void(0)">' + index + '</a></li>';
+                    }
+                    $('.page-list').after(pageLi);
+                    page = pages[currentPage];
+                    printRow(page);
+                }
+                , error(e) {
+                    console.log(e);
+                }
+            });
+        }
+        function pageChange(page){
+            currentPage = page; //누른 번호를 현재페이지에 넣어주기
+            $('.list-item').removeClass('active');
+            $('#page_'+page).addClass('active');
+            $('.page-data').html("");
+            pageD = pages[page];
+            printRow(pageD);
+        }
+
+        function printRow(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                $('.page-data').append("<tr><td>" + (i + 1)
+                    + "</td><td>" + arr[i].market
+                    + "</td><td>" + arr[i].korean_name
+                    + "</td><td>" + arr[i].english_name + "</td></tr>"
+                );
+            }
+        }
+
+        function nextPage(){
+            if(pages.length -1 > currentPage){
+                page = currentPage + 1;
+                pageChange(page);
+            }
+        }
+        function prePage(){
+            if(currentPage < pages.length && currentPage != 0){
+                page = currentPage -1;
+                pageChange(page);
+            }
+        }
+
+        //데이터를 10개씩 끊어서 배열에 차곡차곡 넣어줌.
+        function paginate(arr, size) {
+            return arr.reduce(function (acc, val, i) {
+                var idx = Math.floor(i / size);
+                var page = acc[idx] || (acc[idx] = []);
+                page.push(val);
+                return acc;
+            }, []);
+            // [] 최초 호출에서 첫번째 인수에 제공하는 값
+        }
+
+        $(document).ready(function(){
+            $('#listSize').change(function(){
+                page_size = $('#listSize').val();
+                $('.page-data').html("");
+                $('.list-item').remove();
+                fn_search();
+            });
+        });
+    </script>
+
+</head>
+
+<body onload="fn_search()">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid justify-content-md-end">
+                    <div class="form-group row">
+                        <div class="w100">
+                            <select id="listSize" class="form-control form-control-sm">
+                                <option value="10">10개 보기</option>
+                                <option value="20">20개 보기</option>
+                                <option value="50">50개 보기</option>
+                                <option value="100">100개 보기</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table class="table table-hover">
+                <colgroup>
+                    <col width="5%">
+                    <col width="35%">
+                    <col width="35%">
+                    <col width="25%">
+                </colgroup>
+                <thead>
+                    <th scope="col">No</th>
+                    <th scope="col">코드</th>
+                    <th scope="col">국문이름</th>
+                    <th scope="col">영문이름</th>
+                </thead>
+                <tbody class="page-data">
+                    <!-- 데이터 삽입 영역 -->
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li onclick="prePage()" class="page-item page-list">
+                        <a class="page-link" href="#">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only"></span>
+                        </a>
+                    </li>
+                    <li onclick="nextPage()" class="page-item">
+                        <a class="page-link" href="#">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</body>
+
+</html>
