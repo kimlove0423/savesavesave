@@ -25,9 +25,8 @@
                     method: "GET",
                     url: "https://dapi.kakao.com/v3/search/book?target=title",
                     data: { query: $("#bookName").val() },
-                    headers: { Authorization: "KakaoAK 7da082391f0cdfb334aad83089f31321" }
-                })
-                    .done(function (msg) {
+                    headers: { Authorization: "KakaoAK 7da082391f0cdfb334aad83089f31321" },
+                    success: function (msg) {
                         console.log(msg);
                         // for (var i = 0; i < 10; i++) {
                         //     $("div").append("<h2><a href='" + msg.documents[i].url + "'>" + msg.documents[i].title + "</a></h2>");
@@ -36,7 +35,8 @@
                         //     $("div").append("<strong>요약:</strong> " + msg.documents[i].contents + "...<br>");
                         //     $("div").append("<img src='" + msg.documents[i].thumbnail + "'/><br>");
                         // }
-                    });
+                    }
+                });
             });
         });
     </script>
