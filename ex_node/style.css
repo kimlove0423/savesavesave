@@ -44,27 +44,27 @@ li:nth-child(2n){
 }
 
 li{
-  background-color: #EEBC1F;
+  background-color: #f4f7f7;
 }
 li::before{
-  background-color: #068D7E;
-  background: conic-gradient(#EEBC1F 25%, #068D7E 0 50%, #EEBC1F 0) 100% 100% /180% 180%;
+  background-color: #1f4e5f;
+  background: conic-gradient(#f4f7f7 25%, #1f4e5f 0 50%, #f4f7f7 0) 100% 100% /180% 180%;
 }
 li::after{
-  background-color: #068D7E;
-  background: conic-gradient(#EEBC1F 75%, #068D7E 0) 0 0 /180% 180%;
+  background-color: #1f4e5f;
+  background: conic-gradient(#f4f7f7 75%, #1f4e5f 0) 0 0 /180% 180%;
 }
 
-li:nth-child(2n){
-  background-color: #FF5291;
+/* li:nth-child(2n){
+  background-color: #fbd14b;
 }
 li:nth-child(2n)::before{
   background-color: #4062BB;
-  background: conic-gradient(#FF5291 25%, #4062BB 0 50%, #FF5291 0) 100% 100% /180% 180%;
+  background: conic-gradient(#fbd14b 25%, #4062BB 0 50%, #fbd14b 0) 100% 100% /180% 180%;
 }
 li:nth-child(2n)::after{
   background-color: #4062BB;
-  background: conic-gradient(#FF5291 75%, #4062BB 0) 0 0 /180% 180%;
+  background: conic-gradient(#fbd14b 75%, #4062BB 0) 0 0 /180% 180%;
 }
 
 li:nth-child(5n){
@@ -80,28 +80,28 @@ li:nth-child(5n)::after{
 }
 
 li:nth-child(7n),li:nth-child(7n-4){
-  background-color: #4062BB;
+  background-color: #c8c8a9;
 }
 li:nth-child(7n)::before,li:nth-child(7n-4)::before{
-  background-color: #F8FFE5;
-  background: conic-gradient(#4062BB 25%, #F8FFE5 0 50%, #4062BB 0) 100% 100% /180% 180%;
+  background-color: #fc9d9a;
+  background: conic-gradient(#c8c8a9 25%, #fc9d9a 0 50%, #c8c8a9 0) 100% 100% /180% 180%;
 }
 li:nth-child(7n)::after,li:nth-child(7n-4)::after{
-  background-color: #F8FFE5;
-  background: conic-gradient(#4062BB 75%, #F8FFE5 0) 0 0 /180% 180%;
+  background-color: #fc9d9a;
+  background: conic-gradient(#c8c8a9 75%, #fc9d9a 0) 0 0 /180% 180%;
 }
 
 li:nth-child(9n),li:nth-child(9n-5){
-  background-color: #F8FFE5;
+  background-color: #45d9fd;
 }
 li:nth-child(9n)::before,li:nth-child(9n-5)::before{
-  background-color: #068D7E;
-  background: conic-gradient(#F8FFE5 25%, #068D7E 0 50%, #F8FFE5 0) 100% 100% /180% 180%;
+  background-color: #08182b;
+  background: conic-gradient(#45d9fd 25%, #08182b 0 50%, #45d9fd 0) 100% 100% /180% 180%;
 }
 li:nth-child(9n)::after,li:nth-child(9n-5)::after{
-  background-color: #068D7E;
-  background: conic-gradient(#F8FFE5 75%, #068D7E 0) 0 0 /180% 180%;
-}
+  background-color: #08182b;
+  background: conic-gradient(#45d9fd 75%, #08182b 0) 0 0 /180% 180%;
+} */
 
 img{
   position: absolute;

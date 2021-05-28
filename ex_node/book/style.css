@@ -38,6 +38,18 @@
 .app[data-current-media=movie] .controls__thickness {
   display: none;
 }
+/*타이핑 구간*/
+.typing-txt{
+  display: none;
+}
+.typing{
+  position: absolute;
+  top: 30%;
+  z-index: 10;
+  margin: 0;
+  font-size: 1.5rem;
+  max-width: 680px;
+}
 
 /**
  * Title
