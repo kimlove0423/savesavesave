@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>내 사이트임 ㅎㅇ</h1>
+    <input id="bookName" value="미움받을 용기" type="text">
+    <button id="search">검색</button>
+
+    <p></p>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#search").click(function () {
+                $.ajax({
+                    method: "GET",
+                    url: "https://dapi.kakao.com/v3/search/book?target=title",
+                    data: { query: $("#bookName").val() },
+                    headers: { Authorization: "KakaoAK fc43bd9a38a4af415153a8922bb94f82" },
+                    error(e){
+                        console.log(e);
+
+                    }
+                })
+                    .done(function (msg) {
+                        console.log(msg.documents[0].title);
+                        console.log(msg.documents[0].thumbnail);
+                        console.log(msg.documents[0].url);
+                        $("p").append("<strong>" + msg.documents[0].title + "</strong>");
+                        $("p").append("<img src='" + msg.documents[0].thumbnail + "'/>");
+                        $("p").append("<a href='" + msg.documents[0].url + "'>링크</a>");
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

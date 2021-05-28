@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+    <script>
+        function uploade(event) {
+            
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function () {
+                var fdata = reader.result;
+                var read_butter = XLSX.read(fdata, { type: 'binary' });
+                read_butter.SheetNames.forEach(function (SheetNames) {
+                    var rowdata = XLSX.utils.sheet_to_json(read_butter.Sheets[SheetNames]);
+                    // console.log(JSON.stringify(rowdata));
+                    fn_line(rowdata);
+                });
+            }
+            reader.readAsBinaryString(input.files[0]);
+        }
+        function fn_line(inputData) {
+            var fileValue = $('#id_file_upload').val().split("\\");
+            var fileName = fileValue[fileValue.length-1]; //파일명
+            var labelData = [];
+            var inData = [];
+            for(var i = 0; i<inputData.length; i++){
+                labelData.push(inputData[i].Date);
+                inData.push(inputData[i].Open);
+            }
+            
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var data = {
+                    type: 'line'
+                    , data: {
+                        labels: labelData
+                        , datasets: [{
+                            label: fileName
+                            , backgroundColor: 'rgb(225,99,132)'
+                            , file: false
+                            , borderColor: 'rgb(225,99,132)'
+                            , lineTension: 0.1
+                            , data: inData
+                        }]
+                    },
+                    Options: {}
+                }
+                var chart = new Chart(ctx, data);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="file" id="id_file_upload" onchange="uploade(event);">
+    <div style="width: 100%;">
+        <canvas id="myChart"></canvas>
+    </div>
+</body>
+
+</html>
